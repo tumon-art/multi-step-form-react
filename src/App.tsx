@@ -1,19 +1,21 @@
-import { ReactElement, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import useMultiStepForm from "./useMultiStepForm";
+import UserForm from "./UserForm";
+import AddressForm from "./AddressForm";
+import AccountForm from "./AccountForm";
+import { FormEvent } from "react";
 
 function App() {
   const { steps, currentStepIndex, step, next, back, isFirstStep, isLastStep } =
-    useMultiStepForm([
-      <div> First Step </div>,
-      <div> Seconde Step </div>,
-      <div> Third Step </div>,
-    ]);
+    useMultiStepForm([<UserForm />, <AddressForm />, <AccountForm />]);
 
+  const onFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    next();
+  };
   return (
     <div className="App">
-      <form>
+      <form onSubmit={onFormSubmit}>
         <div className="stepCount">
           {currentStepIndex + 1} / {steps.length}
         </div>
@@ -21,10 +23,14 @@ function App() {
 
         <div className="stepNavHold">
           {/* === Prev Step */}
-          {!isFirstStep && <div onClick={() => back()}> Back </div>}
+          {!isFirstStep && (
+            <button type="button" onClick={() => back()}>
+              Back
+            </button>
+          )}
 
           {/* === Next Step */}
-          <div onClick={() => next()}>{isLastStep ? "Finish" : "Next"}</div>
+          <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
         </div>
       </form>
     </div>

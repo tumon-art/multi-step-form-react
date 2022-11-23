@@ -8,9 +8,8 @@
 form {
   border: 4px solid gray;
   border-radius: 5px;
-  height: 400px;
-  width: 400px;
   position: relative;
+  padding: 3rem 3rem;
 }
 
 .stepCount {
@@ -34,4 +33,16 @@ form {
 .stepNavHold div:hover {
   background-color: silver;
   cursor: pointer;
+}
+
+.FormWrapperH2 {
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.FormWrapperHold {
+  display: grid;
+  gap: 1rem 0.5rem;
+  justify-content: flex-start;
+  grid-template-columns: auto minmax(auto, 400px);
 }
