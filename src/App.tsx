@@ -46,7 +46,8 @@ function App() {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    next();
+    if (!isLastStep) return next();
+    alert(JSON.stringify(data));
   };
   return (
     <div className="App">
