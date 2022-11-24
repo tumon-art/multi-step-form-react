@@ -1,17 +1,35 @@
 import FormWrapper from "./FormWrapper";
 
-type AccountFormProps = {
+type AccountFormData = {
   email: string;
   password: string;
 };
-export default function AccountForm({ email, password }: AccountFormProps) {
+type AccountFormProps = AccountFormData & {
+  updateFields: (field: Partial<AccountFormData>) => void;
+};
+export default function AccountForm({
+  email,
+  password,
+  updateFields,
+}: AccountFormProps) {
   return (
     <FormWrapper title="Account Info">
       <label> Email</label>
-      <input required autoFocus type="text" />
+      <input
+        required
+        autoFocus
+        type="text"
+        value={email}
+        onChange={(e) => updateFields({ email: e.target.value })}
+      />
 
       <label> Password</label>
-      <input required type="password" />
+      <input
+        required
+        type="password"
+        value={password}
+        onChange={(e) => updateFields({ password: e.target.value })}
+      />
     </FormWrapper>
   );
 }

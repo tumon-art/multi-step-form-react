@@ -33,12 +33,16 @@ function App() {
   const [data, setData] = useState(INITIAL_DATA);
   const { steps, currentStepIndex, step, next, back, isFirstStep, isLastStep } =
     useMultiStepForm([
-      <UserForm {...data} />,
-      <AddressForm {...data} />,
-      <AccountForm {...data} />,
+      <UserForm {...data} updateFields={updateFields} />,
+      <AddressForm {...data} updateFields={updateFields} />,
+      <AccountForm {...data} updateFields={updateFields} />,
     ]);
 
-  const updateFields = (field: Partial<FormData>) => {};
+  function updateFields(field: Partial<FormData>) {
+    setData((prev) => {
+      return { ...prev, ...field };
+    });
+  }
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -50,6 +54,7 @@ function App() {
         <div className="stepCount">
           {currentStepIndex + 1} / {steps.length}
         </div>
+
         {step}
 
         <div className="stepNavHold">
