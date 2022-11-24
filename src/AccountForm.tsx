@@ -1,6 +1,10 @@
 import FormWrapper from "./FormWrapper";
 
-export default function AccountForm() {
+type AccountFormProps = {
+  email: string;
+  password: string;
+};
+export default function AccountForm({ email, password }: AccountFormProps) {
   return (
     <FormWrapper title="Account Info">
       <label> Email</label>

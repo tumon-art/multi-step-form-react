@@ -1,6 +1,17 @@
 import FormWrapper from "./FormWrapper";
 
-export default function AddressForm() {
+type AddressFormProps = {
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+};
+export default function AddressForm({
+  street,
+  city,
+  state,
+  zip,
+}: AddressFormProps) {
   return (
     <FormWrapper title="Address Info">
       <label> Street</label>
