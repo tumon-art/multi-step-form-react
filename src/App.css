@@ -1,17 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap");
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
+
+/* Form */
 form {
-  border: 4px solid gray;
-  border-radius: 5px;
-  position: relative;
   padding: 3rem 3rem;
+    background: var(--main-card);
 }
 
+form input {
+    display: block;
+    width: 226px;
+    height: 36px;
+    box-shadow: 0 0 420px 3px var(--input-border);
+    color: var(--input-color);
+    padding: 0 0 0 1em;
+    background: var(--input-back);
+    border: none;
+    border-bottom: 4px solid var(--input-border);
+    outline: none;
+}
+
+form label {
+    display: inline;
+    color: var(--label-color);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 27px;
+    padding: 0 0 0 0.2em;
+}
+
+
+form button {
+  color: skyblue;
+  background: navy;
+}
+
+
+/* Step  */
 .stepCount {
   position: absolute;
   top: 5px;
@@ -19,20 +50,47 @@ form {
 }
 
 .stepNavHold {
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  /* margin: 2em 0 0 0; */
+  /* gap: 1em; */
   display: flex;
-  justify-content: flex-end;
-  margin: 2em 0 0 0;
-  gap: 1em;
+  width: 100%;
+  justify-content: center;
+  gap: 2em;
+  margin: 5em 0;
 }
 
+.stepNavHold button {
+
+    background: var(--button-back);
+    border: none;
+    padding: 0.2em 1.7em;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    transition: scale var(--transition-btn);
+    color: var(--round-text);
+    cursor: pointer;
+}
+
+/* Form Wrapper  */
 .FormWrapperH2 {
+  font-family: var(--font);
+  font-weight: 800;
+  font-size: 42px;
+  line-height: 58px;
   text-align: center;
-  margin: 0 0 2rem 0;
+
+  background: var(--h1-back);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
 }
 
 .FormWrapperHold {
-  display: grid;
-  gap: 1rem 0.5rem;
-  justify-content: flex-start;
-  grid-template-columns: auto minmax(auto, 400px);
 }

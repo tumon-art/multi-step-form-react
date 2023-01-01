@@ -18,8 +18,9 @@ export default function AccountForm({
       <input
         required
         autoFocus
-        type="text"
+        type="email"
         value={email}
+    placeholder="email"
         onChange={(e) => updateFields({ email: e.target.value })}
       />
 
@@ -28,6 +29,7 @@ export default function AccountForm({
         required
         type="password"
         value={password}
+    placeholder="password"
         onChange={(e) => updateFields({ password: e.target.value })}
       />
     </FormWrapper>

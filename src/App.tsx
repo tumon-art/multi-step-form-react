@@ -49,6 +49,7 @@ function App() {
     if (!isLastStep) return next();
     alert(JSON.stringify(data));
   };
+
   return (
     <div className="App">
       <form onSubmit={onFormSubmit}>

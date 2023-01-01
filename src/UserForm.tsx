@@ -34,14 +34,6 @@ export default function UserForm({
         onChange={(e) => updateFields({ lastName: e.target.value })}
       />
 
-      <label>Age</label>
-      <input
-        required
-        type="number"
-        min={1}
-        value={age}
-        onChange={(e) => updateFields({ age: e.target.value })}
-      />
     </FormWrapper>
   );
 }

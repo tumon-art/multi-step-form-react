@@ -3,11 +3,6 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,32 +11,55 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color: inherit;
+  text-decoration: none;
 }
 
 body {
+  --font: "Lato", sans-serif;
+  --background: #050511;
+  --main-card: #0f151f;
+  --h1-back: linear-gradient(90deg, #00c6ff 0%, #0094ff 100%);
+  --input-back: #0a1c2d;
+  --input-color: #25c0f9;
+  --input-border: #00adff;
+  --label-color: #357ca4;
+  --placeholder: #357ca4;
+  --button-color: #25c0f9;
+  --button-back: linear-gradient(90deg, #00b2ff 0%, #0c54b7 100%);
+  --transition-btn: 0.1s;
+  --round-back-blue: #00adff;
+  --round-back: gray;
+  --round-text: white;
+  --progress-back: linear-gradient(90deg, #00b2ff 0%, #0c54b7 100%);
+  --progress-transition: 0.5s;
+
+  padding: 0;
   margin: 0;
   display: flex;
   place-items: center;
   min-height: 100vh;
+
+  transition: var(--progress-transition);
+  background: var(--background);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.2em 1em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.25s;
-}
-
-button:hover {
-  background-color: #535bf2;
+body.dark {
+  --font: "Lato", sans-serif;
+  --background: #73c7ff;
+  --main-card: #c1e9ff;
+  --h1-back: linear-gradient(90deg, #00c6ff 0%, #0094ff 100%);
+  --input-back: #9aceff;
+  --input-color: #07212b;
+  --input-border: #00adff;
+  --label-color: #357ca4;
+  --placeholder: #357ca4;
+  --button-color: #25c0f9;
+  --button-back: linear-gradient(90deg, #00c6ff 0%, #0094ff 100%);
+  --transition-btn: 0.1s;
+  --round-back-blue: #00adff;
+  --round-back: gray;
+  --round-text: white;
+  --progress-back: linear-gradient(90deg, #00b2ff 0%, #0c54b7 100%);
+  --progress-transition: 0.5s;
 }

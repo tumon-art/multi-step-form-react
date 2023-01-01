@@ -1,8 +1,8 @@
-type FromWarpperProps = {
+type FromWrapperProps = {
   title: string;
   children: React.ReactNode;
 };
-export default function FormWrapper({ title, children }: FromWarpperProps) {
+export default function FormWrapper({ title, children }: FromWrapperProps) {
   return (
     <>
       <h2 className="FormWrapperH2"> {title} </h2>
