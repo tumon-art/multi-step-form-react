@@ -3,57 +3,48 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  color: var(--label-color);
 }
 
-
+.App {
+}
 /* Form */
 form {
   padding: 3rem 3rem;
-    background: var(--main-card);
+  background: var(--main-card);
+  position: relative;
+  isolation: isolate;
+  width: 100%;
 }
 
 form input {
-    display: block;
-    width: 226px;
-    height: 36px;
-    box-shadow: 0 0 420px 3px var(--input-border);
-    color: var(--input-color);
-    padding: 0 0 0 1em;
-    background: var(--input-back);
-    border: none;
-    border-bottom: 4px solid var(--input-border);
-    outline: none;
+  display: block;
+  width: 100%;
+  height: 36px;
+  box-shadow: 0 0 420px 3px var(--input-border);
+  color: var(--input-color);
+  padding: 0 0 0 1em;
+  background: var(--input-back);
+  border: none;
+  border-bottom: 4px solid var(--input-border);
+  outline: none;
 }
 
 form label {
-    display: inline;
-    color: var(--label-color);
-    font-family: var(--font);
-    font-size: 14px;
-    line-height: 27px;
-    padding: 0 0 0 0.2em;
+  display: inline;
+  color: var(--label-color);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 27px;
+  padding: 0 0 0 0.2em;
 }
-
 
 form button {
   color: skyblue;
   background: navy;
 }
 
-
-/* Step  */
-.stepCount {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
-.stepNavHold {
-  /* display: flex; */
-  /* justify-content: flex-end; */
-  /* margin: 2em 0 0 0; */
-  /* gap: 1em; */
+.btnHold {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -61,19 +52,18 @@ form button {
   margin: 5em 0;
 }
 
-.stepNavHold button {
-
-    background: var(--button-back);
-    border: none;
-    padding: 0.2em 1.7em;
-    border-radius: 10px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    transition: scale var(--transition-btn);
-    color: var(--round-text);
-    cursor: pointer;
+.btnHold button {
+  background: var(--button-back);
+  border: none;
+  padding: 0.2em 1.7em;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  transition: scale var(--transition-btn);
+  color: var(--round-text);
+  cursor: pointer;
 }
 
 /* Form Wrapper  */
@@ -89,8 +79,69 @@ form button {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-
 }
 
 .FormWrapperHold {
+}
+
+/* Progress Bar */
+.progressBarHold {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  isolation: isolate;
+}
+
+.progressBar {
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  height: 12px;
+  z-index: -1;
+  position: absolute;
+  background: var(--round-back);
+}
+
+.progressFill {
+  left: 0px;
+  height: 12px;
+  z-index: -1;
+  transition: width var(--progress-transition);
+  position: absolute;
+  background: var(--progress-back);
+}
+
+/* Circle */
+.circelColor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "lato";
+  font-size: 1.3rem;
+  font-weight: 900;
+  width: 38px;
+  height: 38px;
+  border-radius: 10%;
+  color: var(--round-text);
+  transition: var(--progress-transition);
+  transition-delay: 0.1s;
+  background: var(--round-back-blue);
+}
+
+.onlyCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "lato";
+  font-size: 1.3rem;
+  font-weight: 900;
+  width: 38px;
+  height: 38px;
+  border-radius: 10%;
+  background: var(--round-back);
+  color: var(--round-text);
+  transition: var(--progress-transition);
 }

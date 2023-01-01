@@ -50,16 +50,43 @@ function App() {
     alert(JSON.stringify(data));
   };
 
+  const css = () => {
+    if (currentStepIndex == 0) {
+      return { width: "0%" };
+    }
+    if (currentStepIndex == 1) {
+      return { width: "50%" };
+    }
+    if (currentStepIndex == 2) {
+      return { width: "100%" };
+    }
+  };
+
   return (
     <div className="App">
       <form onSubmit={onFormSubmit}>
-        <div className="stepCount">
-          {currentStepIndex + 1} / {steps.length}
+        {/* === ProgressBar */}
+        <div className="progressBarHold">
+          <div className="progressBar"></div>
+          <div className="progressFill" style={css()}></div>
+          {/* === Buble  */}
+          {steps.map((e: any, i: any) => {
+            return (
+              <div
+                key={i}
+                className={`${
+                  currentStepIndex >= i ? "circelColor" : "onlyCircle"
+                }`}
+              >
+                {i + 1}
+              </div>
+            );
+          })}
         </div>
 
         {step}
 
-        <div className="stepNavHold">
+        <div className="btnHold">
           {/* === Prev Step */}
           {!isFirstStep && (
             <button type="button" onClick={() => back()}>
