@@ -3,6 +3,7 @@ import FormWrapper from "./FormWrapper";
 type AccountFormData = {
   email: string;
   password: string;
+  petName: string;
 };
 type AccountFormProps = AccountFormData & {
   updateFields: (field: Partial<AccountFormData>) => void;
@@ -10,6 +11,7 @@ type AccountFormProps = AccountFormData & {
 export default function AccountForm({
   email,
   password,
+  petName,
   updateFields,
 }: AccountFormProps) {
   return (
@@ -20,7 +22,7 @@ export default function AccountForm({
         autoFocus
         type="email"
         value={email}
-    placeholder="email"
+        placeholder="email"
         onChange={(e) => updateFields({ email: e.target.value })}
       />
 
@@ -29,8 +31,17 @@ export default function AccountForm({
         required
         type="password"
         value={password}
-    placeholder="password"
+        placeholder="password"
         onChange={(e) => updateFields({ password: e.target.value })}
+      />
+
+      <label> Pet Name</label>
+      <input
+        required
+        type="text"
+        value={petName}
+        placeholder="pet name"
+        onChange={(e) => updateFields({ petName: e.target.value })}
       />
     </FormWrapper>
   );

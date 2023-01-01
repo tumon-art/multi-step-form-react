@@ -17,28 +17,31 @@ export default function UserForm({
 }: UserFormProps) {
   return (
     <FormWrapper title="User Data">
-      <label>First Name</label>
+      <label htmlFor="firstname">First Name</label>
       <input
         required
         autoFocus
         type="text"
+        id="firstname"
         value={firstName}
         onChange={(e) => updateFields({ firstName: e.target.value })}
       />
 
-      <label> Last Name</label>
+      <label htmlFor="lastname">Last Name</label>
       <input
         required
         type="text"
         value={lastName}
+        id="lastname"
         onChange={(e) => updateFields({ lastName: e.target.value })}
       />
 
-      <label> Age</label>
+      <label htmlFor="age">Age</label>
       <input
         required
         type="text"
         value={age}
+        id="age"
         onChange={(e) => updateFields({ age: e.target.value })}
       />
     </FormWrapper>

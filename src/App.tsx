@@ -12,9 +12,9 @@ type FormData = {
   street: string;
   city: string;
   state: string;
-  zip: string;
   email: string;
   password: string;
+  petName: string;
 };
 
 const INITIAL_DATA: FormData = {
@@ -24,9 +24,9 @@ const INITIAL_DATA: FormData = {
   street: "",
   city: "",
   state: "",
-  zip: "",
   email: "",
   password: "",
+  petName: "",
 };
 
 function App() {
@@ -63,42 +63,40 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form onSubmit={onFormSubmit}>
-        {/* === ProgressBar */}
-        <div className="progressBarHold">
-          <div className="progressBar"></div>
-          <div className="progressFill" style={css()}></div>
-          {/* === Buble  */}
-          {steps.map((e: any, i: any) => {
-            return (
-              <div
-                key={i}
-                className={`${
-                  currentStepIndex >= i ? "circelColor" : "onlyCircle"
-                }`}
-              >
-                {i + 1}
-              </div>
-            );
-          })}
-        </div>
+    <form onSubmit={onFormSubmit}>
+      {/* === ProgressBar */}
+      <div className="progressBarHold">
+        <div className="progressBar"></div>
+        <div className="progressFill" style={css()}></div>
+        {/* === Buble  */}
+        {steps.map((e: any, i: any) => {
+          return (
+            <div
+              key={i}
+              className={`${
+                currentStepIndex >= i ? "circelColor" : "onlyCircle"
+              }`}
+            >
+              {i + 1}
+            </div>
+          );
+        })}
+      </div>
 
-        {step}
+      <section className="stepSection">{step}</section>
 
-        <div className="btnHold">
-          {/* === Prev Step */}
-          {!isFirstStep && (
-            <button type="button" onClick={() => back()}>
-              Back
-            </button>
-          )}
+      <div className="btnHold">
+        {/* === Prev Step */}
+        {!isFirstStep && (
+          <button type="button" onClick={() => back()}>
+            Back
+          </button>
+        )}
 
-          {/* === Next Step */}
-          <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
-        </div>
-      </form>
-    </div>
+        {/* === Next Step */}
+        <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+      </div>
+    </form>
   );
 }
 
