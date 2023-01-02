@@ -85,6 +85,7 @@ function App() {
           return;
         }
       }
+      // NEXT STEP
       return next();
     }
 
@@ -100,6 +101,8 @@ function App() {
 
     alert(JSON.stringify(data));
     console.log(user.parse(data));
+
+    // RESET
     setCurrentStepIndex(0);
     setData(INITIAL_DATA);
   };

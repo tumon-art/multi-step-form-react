@@ -20,7 +20,7 @@ export default function AccountForm({
       <input
         required
         autoFocus
-        type="text"
+        type="email"
         spellCheck="false"
         value={email}
         onChange={(e) => updateFields({ email: e.target.value })}
