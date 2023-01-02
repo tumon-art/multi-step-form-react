@@ -5,6 +5,7 @@ form {
   position: relative;
   width: 60%;
   height: 600px;
+  transition: var(--progress-transition);
 }
 
 form input {
@@ -17,6 +18,7 @@ form input {
   background: var(--input-back);
   border: none;
   outline: none;
+  transition: var(--progress-transition);
 }
 
 form label {
@@ -31,15 +33,16 @@ form label {
   display: flex;
   width: 100%;
   justify-content: center;
-  gap: 2em;
+  gap: 5em;
   margin: 1em 0;
 }
 
 .btnHold button {
   background: var(--button-back);
   border: none;
+  width: 100px;
   padding: 0.2em 1.7em;
-  border-radius: 10px;
+  border-radius: 5px;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -47,11 +50,15 @@ form label {
   transition: scale var(--transition-btn);
   color: var(--round-text);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 /* Step Section */
 .stepSection {
-  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Form Wrapper  */
@@ -71,7 +78,8 @@ form label {
 }
 
 .FormWrapperHold {
-  width: 100%;
+  width: 60%;
+  margin: 3em;
 }
 
 /* Progress Bar */
@@ -134,4 +142,22 @@ form label {
   background: var(--round-back);
   color: var(--round-text);
   transition: var(--progress-transition);
+}
+
+/* SVG */
+.svg {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-weight: 900;
+  height: 30px;
+  width: 30px;
+  color: rgb(0, 126, 175);
+  fill: rgb(16, 127, 255);
+  cursor: pointer;
+  transition: scale var(--progress-transition);
+}
+
+.svg:hover {
+  scale: 1.1;
 }

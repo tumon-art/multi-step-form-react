@@ -22,6 +22,7 @@ export default function UserForm({
         required
         autoFocus
         type="text"
+        spellCheck="false"
         id="firstname"
         value={firstName}
         onChange={(e) => updateFields({ firstName: e.target.value })}
@@ -31,6 +32,7 @@ export default function UserForm({
       <input
         required
         type="text"
+        spellCheck="false"
         value={lastName}
         id="lastname"
         onChange={(e) => updateFields({ lastName: e.target.value })}
@@ -42,6 +44,7 @@ export default function UserForm({
         type="text"
         value={age}
         id="age"
+        spellCheck="false"
         onChange={(e) => updateFields({ age: e.target.value })}
       />
     </FormWrapper>

@@ -20,9 +20,9 @@ export default function AccountForm({
       <input
         required
         autoFocus
-        type="email"
+        type="text"
+        spellCheck="false"
         value={email}
-        placeholder="email"
         onChange={(e) => updateFields({ email: e.target.value })}
       />
 
@@ -30,8 +30,8 @@ export default function AccountForm({
       <input
         required
         type="password"
+        spellCheck="false"
         value={password}
-        placeholder="password"
         onChange={(e) => updateFields({ password: e.target.value })}
       />
 
@@ -39,8 +39,8 @@ export default function AccountForm({
       <input
         required
         type="text"
+        spellCheck="false"
         value={petName}
-        placeholder="pet name"
         onChange={(e) => updateFields({ petName: e.target.value })}
       />
     </FormWrapper>

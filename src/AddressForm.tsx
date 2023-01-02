@@ -21,6 +21,7 @@ export default function AddressForm({
         required
         autoFocus
         type="text"
+        spellCheck="false"
         value={street}
         onChange={(e) => updateFields({ street: e.target.value })}
       />
@@ -29,14 +30,16 @@ export default function AddressForm({
       <input
         required
         type="text"
+        spellCheck="false"
         value={city}
         onChange={(e) => updateFields({ city: e.target.value })}
       />
 
-      <label>State</label>
+      <label>State </label>
       <input
         required
         type="text"
+        spellCheck="false"
         value={state}
         onChange={(e) => updateFields({ state: e.target.value })}
       />

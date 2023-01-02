@@ -29,5 +29,6 @@ export default function useMultiStepForm(steps: ReactElement[]) {
     steps,
     isFirstStep: currentStepIndex === 0,
     isLastStep: currentStepIndex === steps.length - 1,
+    setCurrentStepIndex,
   };
 }
