@@ -26,7 +26,7 @@ const initialState: UserType = {
   petName: "",
 };
 
-export const userFormSlice = createSlice({
+const userFormSlice = createSlice({
   name: "userForm",
   initialState,
   reducers: {

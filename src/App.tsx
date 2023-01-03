@@ -8,6 +8,7 @@ import { z } from "zod";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./store";
 import { clearFields } from "./slices/formData";
+import { insertErr } from "./slices/formErrors";
 
 const userForm = z.object({
   firstName: z.string().max(10),
@@ -24,7 +25,7 @@ const address = z.object({
 const account = z.object({
   email: z.string().email(),
   password: z.string().min(6),
-  petName: z.string(),
+  petName: z.string().max(6),
 });
 
 const user = userForm.merge(address).merge(account);
@@ -35,6 +36,7 @@ function App() {
   const data = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
+  console.log(data.errors);
   const {
     steps,
     currentStepIndex,
@@ -54,7 +56,8 @@ function App() {
         const status = userForm.safeParse(data.userForm);
 
         if (!status.success) {
-          console.log(status.error.formErrors);
+          console.log(status.error.formErrors.fieldErrors);
+          dispatch(insertErr(status.error.formErrors.fieldErrors));
           return;
         }
       }
@@ -64,7 +67,7 @@ function App() {
         const status = address.safeParse(data.userForm);
 
         if (!status.success) {
-          console.log(status.error.formErrors);
+          console.log(status.error.formErrors.fieldErrors);
           return;
         }
       }
@@ -77,7 +80,7 @@ function App() {
       const status = user.safeParse(data.userForm);
 
       if (!status.success) {
-        console.log(status.error.formErrors);
+        console.log(status.error.formErrors.fieldErrors);
         return;
       }
     }
@@ -168,7 +171,6 @@ function App() {
         })}
       </div>
 
-      <div onClick={() => dispatch(clearFields())}> clear </div>
       <section className="stepSection">{step}</section>
 
       <div className="btnHold">

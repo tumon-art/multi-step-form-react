@@ -37,10 +37,11 @@ export default function UserForm() {
       <input
         required
         type="number"
-        value={age}
+        value={age.toString()}
         id="age"
-        spellCheck="false"
-        onChange={(e) => dispatch(updateFields({ age: e.target.value }))}
+        onChange={(e) =>
+          dispatch(updateFields({ age: Number(e.target.value) }))
+        }
       />
     </FormWrapper>
   );
