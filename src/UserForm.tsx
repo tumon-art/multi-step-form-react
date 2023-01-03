@@ -1,20 +1,15 @@
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import FormWrapper from "./FormWrapper";
+import { updateFields } from "./slices/formData";
+import { RootState } from "./store";
 
-type UserData = {
-  firstName: string;
-  lastName: string;
-  age: string;
-};
-type UserFormProps = UserData & {
-  updateFields: (field: Partial<UserData>) => void;
-};
+export default function UserForm() {
+  const firstName = useSelector((state: RootState) => state.userForm.firstName);
+  const lastName = useSelector((state: RootState) => state.userForm.lastName);
+  const age = useSelector((state: RootState) => state.userForm.age);
+  const dispatch = useDispatch();
 
-export default function UserForm({
-  firstName,
-  lastName,
-  age,
-  updateFields,
-}: UserFormProps) {
   return (
     <FormWrapper title="User Data">
       <label htmlFor="firstname">First Name</label>
@@ -25,7 +20,7 @@ export default function UserForm({
         spellCheck="false"
         id="firstname"
         value={firstName}
-        onChange={(e) => updateFields({ firstName: e.target.value })}
+        onChange={(e) => dispatch(updateFields({ firstName: e.target.value }))}
       />
 
       <label htmlFor="lastname">Last Name</label>
@@ -35,7 +30,7 @@ export default function UserForm({
         spellCheck="false"
         value={lastName}
         id="lastname"
-        onChange={(e) => updateFields({ lastName: e.target.value })}
+        onChange={(e) => dispatch(updateFields({ lastName: e.target.value }))}
       />
 
       <label htmlFor="age">Age</label>
@@ -45,7 +40,7 @@ export default function UserForm({
         value={age}
         id="age"
         spellCheck="false"
-        onChange={(e) => updateFields({ age: e.target.value })}
+        onChange={(e) => dispatch(updateFields({ age: e.target.value }))}
       />
     </FormWrapper>
   );

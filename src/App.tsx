@@ -5,6 +5,9 @@ import AddressForm from "./AddressForm";
 import AccountForm from "./AccountForm";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "./store";
+import { clearFields } from "./slices/formData";
 
 const userForm = z.object({
   firstName: z.string(),
@@ -25,23 +28,13 @@ const account = z.object({
 });
 
 const user = userForm.merge(address).merge(account);
-type User = z.infer<typeof user>;
-
-const INITIAL_DATA: User = {
-  firstName: "",
-  lastName: "",
-  age: "",
-  street: "",
-  city: "",
-  state: "",
-  email: "",
-  password: "",
-  petName: "",
-};
+export type UserType = z.infer<typeof user>;
 
 function App() {
-  const [data, setData] = useState<User>(INITIAL_DATA);
   const [darkMode, setDarkMode] = useState<boolean>(false);
+  const data = useSelector((state: RootState) => state);
+
+  const dispatch = useDispatch();
   const {
     steps,
     currentStepIndex,
@@ -51,24 +44,14 @@ function App() {
     back,
     isFirstStep,
     isLastStep,
-  } = useMultiStepForm([
-    <UserForm {...data} updateFields={updateFields} />,
-    <AddressForm {...data} updateFields={updateFields} />,
-    <AccountForm {...data} updateFields={updateFields} />,
-  ]);
-
-  function updateFields(field: Partial<User>) {
-    setData((prev) => {
-      return { ...prev, ...field };
-    });
-  }
+  } = useMultiStepForm([<UserForm />, <AddressForm />, <AccountForm />]);
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!isLastStep) {
       // CHECK 1st STEP'S ERR
       if (currentStepIndex == 0) {
-        const status = userForm.safeParse(data);
+        const status = userForm.safeParse(data.userForm);
 
         if (!status.success) {
           console.log(status.error.formErrors);
@@ -78,7 +61,7 @@ function App() {
 
       // CHECK 2nd STEP'S ERR
       if (currentStepIndex == 1) {
-        const status = address.safeParse(data);
+        const status = address.safeParse(data.userForm);
 
         if (!status.success) {
           console.log(status.error.formErrors);
@@ -91,7 +74,7 @@ function App() {
 
     // CHECK LAST STEP'S ERR
     if (isLastStep) {
-      const status = user.safeParse(data);
+      const status = user.safeParse(data.userForm);
 
       if (!status.success) {
         console.log(status.error.formErrors);
@@ -99,12 +82,12 @@ function App() {
       }
     }
 
-    alert(JSON.stringify(data));
-    console.log(user.parse(data));
+    alert(JSON.stringify(data.userForm));
+    console.log(user.parse(data.userForm));
 
     // RESET
     setCurrentStepIndex(0);
-    setData(INITIAL_DATA);
+    dispatch(clearFields());
   };
 
   const css = () => {
@@ -126,7 +109,7 @@ function App() {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form className="form" onSubmit={onFormSubmit}>
       {darkMode ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -185,6 +168,7 @@ function App() {
         })}
       </div>
 
+      <div onClick={() => dispatch(clearFields())}> clear </div>
       <section className="stepSection">{step}</section>
 
       <div className="btnHold">
