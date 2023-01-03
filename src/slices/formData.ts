@@ -5,7 +5,7 @@ import { UserType } from "../App";
 const INITIAL_DATA: UserType = {
   firstName: "",
   lastName: "",
-  age: "",
+  age: 0,
   street: "",
   city: "",
   state: "",
@@ -17,7 +17,7 @@ const INITIAL_DATA: UserType = {
 const initialState: UserType = {
   firstName: "",
   lastName: "",
-  age: "",
+  age: 0,
   street: "",
   city: "",
   state: "",

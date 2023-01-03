@@ -10,9 +10,9 @@ import { RootState } from "./store";
 import { clearFields } from "./slices/formData";
 
 const userForm = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  age: z.string(),
+  firstName: z.string().max(10),
+  lastName: z.string().max(10),
+  age: z.number().gt(10).lt(80),
 });
 
 const address = z.object({
@@ -33,8 +33,8 @@ export type UserType = z.infer<typeof user>;
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const data = useSelector((state: RootState) => state);
-
   const dispatch = useDispatch();
+
   const {
     steps,
     currentStepIndex,

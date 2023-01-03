@@ -36,7 +36,7 @@ export default function UserForm() {
       <label htmlFor="age">Age</label>
       <input
         required
-        type="text"
+        type="number"
         value={age}
         id="age"
         spellCheck="false"
