@@ -22,6 +22,7 @@ a {
 }
 
 body {
+  --alert: #38f6ff;
   --font: "Lato", sans-serif;
   --background: #050511;
   --main-card: #0f151f;
@@ -51,6 +52,7 @@ body {
 }
 
 body.dark {
+  --alert: #38f6ff;
   --font: "Lato", sans-serif;
   --background: #73c7ff;
   --main-card: #c1e9ff;

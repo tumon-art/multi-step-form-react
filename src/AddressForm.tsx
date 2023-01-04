@@ -8,6 +8,7 @@ export default function AddressForm() {
   const city = useSelector((state: RootState) => state.userForm.city);
   const state = useSelector((state: RootState) => state.userForm.state);
   const dispatch = useDispatch();
+  const errors = useSelector((state: RootState) => state.errors);
 
   return (
     <FormWrapper title="Address Info">
@@ -20,6 +21,7 @@ export default function AddressForm() {
         value={street}
         onChange={(e) => dispatch(updateFields({ street: e.target.value }))}
       />
+      {errors.street && <p> {errors.street[0]} </p>}
 
       <label> City</label>
       <input
@@ -29,6 +31,7 @@ export default function AddressForm() {
         value={city}
         onChange={(e) => dispatch(updateFields({ city: e.target.value }))}
       />
+      {errors.city && <p> {errors.city[0]} </p>}
 
       <label>State </label>
       <input
@@ -38,6 +41,7 @@ export default function AddressForm() {
         value={state}
         onChange={(e) => dispatch(updateFields({ state: e.target.value }))}
       />
+      {errors.state && <p> {errors.state[0]} </p>}
     </FormWrapper>
   );
 }

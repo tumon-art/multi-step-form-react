@@ -84,6 +84,7 @@ function App() {
         dispatch(insertErr(status.error.formErrors.fieldErrors));
         return;
       }
+      dispatch(clearErr());
     }
 
     alert(JSON.stringify(formData));

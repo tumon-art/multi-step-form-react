@@ -35,6 +35,7 @@ export default function UserForm() {
         id="lastname"
         onChange={(e) => dispatch(updateFields({ lastName: e.target.value }))}
       />
+      {errors.lastName && <p> {errors.lastName[0]} </p>}
 
       <label htmlFor="age">Age</label>
       <input
@@ -46,6 +47,7 @@ export default function UserForm() {
           dispatch(updateFields({ age: Number(e.target.value) }))
         }
       />
+      {errors.age && <p> {errors.age[0]} </p>}
     </FormWrapper>
   );
 }
