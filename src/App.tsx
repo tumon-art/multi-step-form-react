@@ -8,7 +8,7 @@ import { z } from "zod";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./store";
 import { clearFields } from "./slices/formData";
-import { insertErr } from "./slices/formErrors";
+import { clearErr, insertErr } from "./slices/formErrors";
 
 const userForm = z.object({
   firstName: z.string().max(10),
@@ -33,10 +33,11 @@ export type UserType = z.infer<typeof user>;
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
-  const data = useSelector((state: RootState) => state);
+  const formData = useSelector((state: RootState) => state.userForm);
+  const errors = useSelector((state: RootState) => state.errors);
   const dispatch = useDispatch();
 
-  console.log(data.errors);
+  console.log("errors >>>>> ", errors);
   const {
     steps,
     currentStepIndex,
@@ -53,10 +54,9 @@ function App() {
     if (!isLastStep) {
       // CHECK 1st STEP'S ERR
       if (currentStepIndex == 0) {
-        const status = userForm.safeParse(data.userForm);
+        const status = userForm.safeParse(formData);
 
         if (!status.success) {
-          console.log(status.error.formErrors.fieldErrors);
           dispatch(insertErr(status.error.formErrors.fieldErrors));
           return;
         }
@@ -64,29 +64,30 @@ function App() {
 
       // CHECK 2nd STEP'S ERR
       if (currentStepIndex == 1) {
-        const status = address.safeParse(data.userForm);
+        const status = address.safeParse(formData);
 
         if (!status.success) {
-          console.log(status.error.formErrors.fieldErrors);
+          dispatch(insertErr(status.error.formErrors.fieldErrors));
           return;
         }
       }
       // NEXT STEP
+      dispatch(clearErr());
       return next();
     }
 
     // CHECK LAST STEP'S ERR
     if (isLastStep) {
-      const status = user.safeParse(data.userForm);
+      const status = user.safeParse(formData);
 
       if (!status.success) {
-        console.log(status.error.formErrors.fieldErrors);
+        dispatch(insertErr(status.error.formErrors.fieldErrors));
         return;
       }
     }
 
-    alert(JSON.stringify(data.userForm));
-    console.log(user.parse(data.userForm));
+    alert(JSON.stringify(formData));
+    console.log(user.parse(formData));
 
     // RESET
     setCurrentStepIndex(0);

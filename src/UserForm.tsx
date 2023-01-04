@@ -9,6 +9,7 @@ export default function UserForm() {
   const lastName = useSelector((state: RootState) => state.userForm.lastName);
   const age = useSelector((state: RootState) => state.userForm.age);
   const dispatch = useDispatch();
+  const errors = useSelector((state: RootState) => state.errors);
 
   return (
     <FormWrapper title="User Data">
@@ -22,6 +23,8 @@ export default function UserForm() {
         value={firstName}
         onChange={(e) => dispatch(updateFields({ firstName: e.target.value }))}
       />
+
+      {errors.firstName && <p> {errors.firstName[0]} </p>}
 
       <label htmlFor="lastname">Last Name</label>
       <input
