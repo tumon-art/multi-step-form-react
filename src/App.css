@@ -6,7 +6,21 @@
   width: 60%;
   height: 600px;
   transition: var(--progress-transition);
+  animation: anim 0.5s;
+  will-change: tranlate rotate;
 }
+
+  @keyframes anim {
+    0% {
+      translate: 220px 120px;
+      rotate: -20deg;
+    }
+
+    100% {
+      translate: 0px;
+    }
+      rotate: 0;
+  }
 
 .form input {
   display: block;
