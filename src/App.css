@@ -3,8 +3,8 @@
   padding: 3rem 3rem;
   background: var(--main-card);
   position: relative;
-  width: 60%;
-  height: 600px;
+  width: 100%;
+  height: 100vh;
   transition: var(--progress-transition);
   animation: anim 0.5s;
   will-change: tranlate rotate;
@@ -121,7 +121,7 @@
 }
 
 .FormWrapperHold {
-  width: 60%;
+  width: 100%;
   margin: 3em;
 }
 
@@ -140,7 +140,7 @@
   right: 0;
   left: 0;
   margin: 0 auto;
-  height: 12px;
+  height: 10px;
   z-index: -1;
   position: absolute;
   background: var(--round-back);
@@ -148,7 +148,7 @@
 
 .progressFill {
   left: 0px;
-  height: 12px;
+  height: 10px;
   z-index: -1;
   transition: width var(--progress-transition);
   position: absolute;
@@ -163,8 +163,8 @@
   font-family: "lato";
   font-size: 1.3rem;
   font-weight: 900;
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   border-radius: 10%;
   color: var(--round-text);
   transition: var(--progress-transition);
@@ -179,8 +179,8 @@
   font-family: "lato";
   font-size: 1.3rem;
   font-weight: 900;
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   border-radius: 10%;
   background: var(--round-back);
   color: var(--round-text);
@@ -203,4 +203,34 @@
 
 .svg:hover {
   scale: 1.1;
+}
+
+@media (min-width: 640px) {
+  .form {
+   width: 60%;
+   height: 600px;
+  }
+
+  .FormWrapperHold {
+   width: 60%;
+   margin: 3em;
+  }
+
+  .circelColor {
+   width: 38px;
+   height: 38px;
+  }
+
+  .onlyCircle {
+   width: 38px;
+   height: 38px;
+
+  }
+  .progressBar {
+   height: 10px;
+  }
+
+  .progressFill {
+   height: 12px;
+  }
 }
