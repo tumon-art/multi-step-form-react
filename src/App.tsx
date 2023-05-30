@@ -11,7 +11,7 @@ import { clearFields } from "./slices/formData";
 import { clearErr, insertErr } from "./slices/formErrors";
 
 const userForm = z.object({
-  firstName: z.string().max(10),
+  firstName: z.string().min(2).max(10),
   lastName: z.string().max(10),
   age: z.number().gt(10).lt(80),
 });
