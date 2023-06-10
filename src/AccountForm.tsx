@@ -1,15 +1,13 @@
 import FormWrapper from "./FormWrapper";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { RootState } from "./store";
+import { useAppDispatch, useAppSelector } from "./hook";
 import { updateFields } from "./slices/formData";
 
 export default function AccountForm() {
-  const email = useSelector((state: RootState) => state.userForm.email);
-  const password = useSelector((state: RootState) => state.userForm.password);
-  const petName = useSelector((state: RootState) => state.userForm.petName);
-  const dispatch = useDispatch();
-  const errors = useSelector((state: RootState) => state.errors);
+  const email = useAppSelector((state) => state.userForm.email);
+  const password = useAppSelector((state) => state.userForm.password);
+  const petName = useAppSelector((state) => state.userForm.petName);
+  const dispatch = useAppDispatch();
+  const errors = useAppSelector((state) => state.errors);
 
   return (
     <FormWrapper title="Account Info">

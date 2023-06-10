@@ -1,14 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
 import FormWrapper from "./FormWrapper";
+import { useAppDispatch, useAppSelector } from "./hook";
 import { updateFields } from "./slices/formData";
-import { RootState } from "./store";
 
 export default function AddressForm() {
-  const street = useSelector((state: RootState) => state.userForm.street);
-  const city = useSelector((state: RootState) => state.userForm.city);
-  const state = useSelector((state: RootState) => state.userForm.state);
-  const dispatch = useDispatch();
-  const errors = useSelector((state: RootState) => state.errors);
+  const street = useAppSelector((state) => state.userForm.street);
+  const city = useAppSelector((state) => state.userForm.city);
+  const state = useAppSelector((state) => state.userForm.state);
+  const dispatch = useAppDispatch();
+  const errors = useAppSelector((state) => state.errors);
 
   return (
     <FormWrapper title="Address Info">

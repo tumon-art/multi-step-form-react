@@ -1,15 +1,13 @@
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import FormWrapper from "./FormWrapper";
+import { useAppDispatch, useAppSelector } from "./hook";
 import { updateFields } from "./slices/formData";
-import { RootState } from "./store";
 
 export default function UserForm() {
-  const firstName = useSelector((state: RootState) => state.userForm.firstName);
-  const lastName = useSelector((state: RootState) => state.userForm.lastName);
-  const age = useSelector((state: RootState) => state.userForm.age);
-  const dispatch = useDispatch();
-  const errors = useSelector((state: RootState) => state.errors);
+  const firstName = useAppSelector((state) => state.userForm.firstName);
+  const lastName = useAppSelector((state) => state.userForm.lastName);
+  const age = useAppSelector((state) => state.userForm.age);
+  const dispatch = useAppDispatch();
+  const errors = useAppSelector((state) => state.errors);
 
   return (
     <FormWrapper title="User Data">
