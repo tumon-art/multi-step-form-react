@@ -5,10 +5,9 @@ import AddressForm from "./AddressForm";
 import AccountForm from "./AccountForm";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "./store";
 import { clearFields } from "./slices/formData";
 import { clearErr, insertErr } from "./slices/formErrors";
+import { useAppDispatch, useAppSelector } from "./hook";
 
 const userForm = z.object({
   firstName: z.string().min(2).max(10),
@@ -33,9 +32,9 @@ export type UserType = z.infer<typeof user>;
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
-  const formData = useSelector((state: RootState) => state.userForm);
-  const errors = useSelector((state: RootState) => state.errors);
-  const dispatch = useDispatch();
+  const formData = useAppSelector((state) => state.userForm);
+  const errors = useAppSelector((state) => state.errors);
+  const dispatch = useAppDispatch();
 
   console.log("errors >>>>> ", errors);
   const {
