@@ -5,7 +5,8 @@ import formErrors from "./slices/formErrors";
 export const store = configureStore({
   reducer: {
     userForm: userFormSlice,
-    errors: formErrors,
+
+   errors: formErrors,
   },
 });
 
