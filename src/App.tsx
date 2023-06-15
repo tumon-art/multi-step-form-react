@@ -173,7 +173,7 @@ function App() {
       </div>
 
       <section className="stepSection">{step}</section>
-
+      <span role="nothing"> 0 </span>
       <div className="btnHold">
         {/* === Prev Step */}
         {!isFirstStep}
