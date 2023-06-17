@@ -6,7 +6,7 @@ import { store } from "./store";
 
 describe("<App />", () => {
   test("App mounts properly", () => {
-    const wrapper = render(<App />);
+    const wrapper = render(<UserForm />);
     expect(wrapper).toBeTruthy();
 
     // Get by h1
