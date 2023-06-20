@@ -7,7 +7,7 @@ export default defineConfig({
     },
     include: [...configDefaults.include, "./src/**/*.(spec|test).[jt]s?(x)"],
     // include: [...configDefaults.include, "src/**/*.{ts,tsx,js,jsx}"],
-    // exclude: [...configDefaults.exclude, "src/**/*.d.ts"],
+    exclude: [...configDefaults.exclude, "src/**/*.d.ts"],
     globals: true,
     environment: "happy-dom",
   },
